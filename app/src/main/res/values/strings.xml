@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pok\u00E9App</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="id_string">#%d</string>
+    <string name="height">%1$.1fm (%2$d\' %3$d\")</string>
+    <string name="weight">%1$.1fkg (%2$d lb)</string>
+    <string name="abilities">Abilities</string>
+    <string name="ability">Ability</string>
+    <string name="moves">Moves</string>
+    <string name="list">%1$s: %2$s</string>
+    <string name="pokedex">Pok\u00E9dex</string>
+    <string name="favorites">Favorites</string>
+    <string name="home">Home</string>
+    <string name="reload">Reload</string>
+    <string name="normal">Normal</string>
+    <string name="fighting">Fighting</string>
+    <string name="flying">Flying</string>
+    <string name="poison">Poison</string>
+    <string name="ground">Ground</string>
+    <string name="rock">Rock</string>
+    <string name="bug">Bug</string>
+    <string name="ghost">Ghost</string>
+    <string name="steel">Steel</string>
+    <string name="fire">Fire</string>
+    <string name="water">Water</string>
+    <string name="grass">Grass</string>
+    <string name="electric">Electric</string>
+    <string name="psychic">Psychic</string>
+    <string name="ice">Ice</string>
+    <string name="dragon">Dragon</string>
+    <string name="dark">Dark</string>
+    <string name="fairy">Fairy</string>
+    <string name="action_filter">Filter</string>
+    <string name="no_results_text">No results found</string>
+    <string name="no_evolution">No known evolutions</string>
+</resources>

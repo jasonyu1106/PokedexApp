@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.pokeapp.overview.OverviewViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".overview.OverviewFragment">
+
+        <ProgressBar
+            android:id="@+id/progress_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layout_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/image_error"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_baseline_cloud_off" />
+
+            <TextView
+                android:id="@+id/text_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:textSize="16sp"
+                tools:text="Connection Error" />
+
+            <Button
+                android:id="@+id/button_reload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/transparent"
+                android:onClick="@{() -> viewModel.requestPagerRetry()}"
+                android:text="@string/reload"
+                android:textColor="?android:attr/textColorPrimary" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/no_results_page"
+            layout="@layout/no_results"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <HorizontalScrollView
+            android:id="@+id/filter_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:scrollbars="none"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleLine="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_normal"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/normal"
+                    app:checkedIcon="@drawable/normal"
+                    app:chipBackgroundColor="@color/bg_normal_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_fighting"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fighting"
+                    app:checkedIcon="@drawable/fighting"
+                    app:chipBackgroundColor="@color/bg_fighting_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_flying"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/flying"
+                    app:checkedIcon="@drawable/flying"
+                    app:chipBackgroundColor="@color/bg_flying_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_poison"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/poison"
+                    app:checkedIcon="@drawable/poison"
+                    app:chipBackgroundColor="@color/bg_poison_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_ground"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ground"
+                    app:checkedIcon="@drawable/ground"
+                    app:chipBackgroundColor="@color/bg_ground_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_rock"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rock"
+                    app:checkedIcon="@drawable/rock"
+                    app:chipBackgroundColor="@color/bg_rock_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_bug"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bug"
+                    app:checkedIcon="@drawable/bug"
+                    app:chipBackgroundColor="@color/bg_bug_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_ghost"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ghost"
+                    app:checkedIcon="@drawable/ghost"
+                    app:chipBackgroundColor="@color/bg_ghost_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_steel"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/steel"
+                    app:checkedIcon="@drawable/steel"
+                    app:chipBackgroundColor="@color/bg_steel_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_fire"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fire"
+                    app:checkedIcon="@drawable/fire"
+                    app:chipBackgroundColor="@color/bg_fire_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_water"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/water"
+                    app:checkedIcon="@drawable/water"
+                    app:chipBackgroundColor="@color/bg_water_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_grass"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/grass"
+                    app:checkedIcon="@drawable/grass"
+                    app:chipBackgroundColor="@color/bg_grass_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_electric"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/electric"
+                    app:checkedIcon="@drawable/electric"
+                    app:chipBackgroundColor="@color/bg_electric_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_psychic"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/psychic"
+                    app:checkedIcon="@drawable/psychic"
+                    app:chipBackgroundColor="@color/bg_psychic_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_ice"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ice"
+                    app:checkedIcon="@drawable/ice"
+                    app:chipBackgroundColor="@color/bg_ice_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_dragon"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dragon"
+                    app:checkedIcon="@drawable/dragon"
+                    app:chipBackgroundColor="@color/bg_dragon_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_dark"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dark"
+                    app:checkedIcon="@drawable/dark"
+                    app:chipBackgroundColor="@color/bg_dark_chip_state_list" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_fairy"
+                    style="@style/FilterChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fairy"
+                    app:checkedIcon="@drawable/fairy"
+                    app:chipBackgroundColor="@color/bg_fairy_chip_state_list" />
+
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filter_menu"
+            tools:listitem="@layout/recycler_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

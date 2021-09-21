@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="pokemon"
+            type="com.example.pokeapp.database.FavoriteEntry" />
+
+        <variable
+            name="onClickListener"
+            type="com.example.pokeapp.favorites.OnFavoriteClickListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/favorite_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:onClick="@{() -> onClickListener.onClick(pokemon)}"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="5dp"
+        tools:backgroundTint="@color/gray">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp">
+
+            <ImageView
+                android:id="@+id/favorite_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:imageUrl="@{pokemon.imgUrl}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:paletteTargetView="@{favoriteCardView}"
+                app:paletteUrl="@{pokemon.imgUrl}"
+                tools:src="@drawable/ic_placeholder" />
+
+            <TextView
+                android:id="@+id/favorite_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favorite_image"
+                app:name="@{pokemon.name}"
+                tools:text="Pikachu" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

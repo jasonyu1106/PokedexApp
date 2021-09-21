@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.pokeapp.detail.DetailViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        tools:context=".detail.DetailFragment">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/bg_transparent"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@android:color/transparent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_round_top_corners"
+                android:paddingBottom="8dp">
+
+                <ToggleButton
+                    android:id="@+id/favorite_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@null"
+                    android:button="@drawable/button_favorite_state_list"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:textOff=""
+                    android:textOn=""
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="64dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:name="@{viewModel.pokemonDetails.name}"
+                    tools:text="Pikachu" />
+
+                <View
+                    android:id="@+id/name_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/gray"
+
+                    app:layout_constraintTop_toBottomOf="@id/name_text" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/type_chip_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/name_divider"
+                    app:singleLine="true">
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <TextView
+                    android:id="@+id/id_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="?android:attr/textColorPrimary"
+                    app:layout_constraintEnd_toStartOf="@+id/weight_text"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/height_text"
+                    app:layout_constraintTop_toBottomOf="@+id/type_chip_group"
+                    app:pokemonId="@{viewModel.pokemonDetails.id}"
+                    tools:text="#25" />
+
+                <TextView
+                    android:id="@+id/id_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID"
+                    app:layout_constraintEnd_toEndOf="@+id/id_text"
+                    app:layout_constraintStart_toStartOf="@id/id_text"
+                    app:layout_constraintTop_toBottomOf="@id/id_text" />
+
+                <TextView
+                    android:id="@+id/height_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?android:attr/textColorPrimary"
+                    app:layout_constraintBaseline_toBaselineOf="@id/id_text"
+                    app:layout_constraintEnd_toStartOf="@+id/id_text"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:pokemonHeight="@{viewModel.pokemonDetails.height}"
+                    tools:text="0.4m" />
+
+                <TextView
+                    android:id="@+id/height_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Height"
+                    app:layout_constraintBaseline_toBaselineOf="@id/id_label"
+                    app:layout_constraintEnd_toEndOf="@+id/height_text"
+                    app:layout_constraintStart_toStartOf="@id/height_text"
+                    app:layout_constraintTop_toBottomOf="@id/height_text" />
+
+                <TextView
+                    android:id="@+id/weight_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?android:attr/textColorPrimary"
+                    app:layout_constraintBaseline_toBaselineOf="@id/id_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/id_text"
+                    app:pokemonWeight="@{viewModel.pokemonDetails.weight}"
+                    tools:text="6.0kg" />
+
+                <TextView
+                    android:id="@+id/weight_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weight"
+                    app:layout_constraintBaseline_toBaselineOf="@id/id_label"
+                    app:layout_constraintEnd_toEndOf="@+id/weight_text"
+                    app:layout_constraintStart_toStartOf="@id/weight_text"
+                    app:layout_constraintTop_toBottomOf="@id/weight_text" />
+
+                <com.github.mikephil.charting.charts.HorizontalBarChart
+                    android:id="@+id/stats_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/id_label" />
+
+                <TextView
+                    android:id="@+id/abilities_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.pokemonDetails.abilities.size > 1 ?  @string/abilities : @string/ability}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stats_chart"
+                    tools:text="Abilities" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/abilities_chip_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/abilities_header"
+                    app:singleLine="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/abilities_chip_group"
+                    app:list="@{viewModel.pokemonDetails.moveset}"
+                    app:name="@{@string/moves}"
+                    tools:text="Moves: Iron Tail" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/evolution_tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/abilities_chip_group"
+                    app:tabTextAppearance="@style/TabStyle" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/evolution_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/evolution_tab_layout" />
+
+                <ProgressBar
+                    android:id="@+id/evolution_progress"
+                    android:layout_width="32dp"
+                    android:layout_height="138dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/abilities_chip_group" />
+
+                <TextView
+                    android:id="@+id/text_no_evolution"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/no_evolution"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/abilities_chip_group" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <ImageView
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            app:imageUrl="@{viewModel.pokemonDetails.imgUrl}"
+            app:layout_anchor="@id/bg_transparent"
+            app:layout_anchorGravity="bottom|center"
+            tools:srcCompat="@drawable/ic_placeholder" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
