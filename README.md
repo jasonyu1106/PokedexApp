@@ -1,5 +1,5 @@
 # PokedexApp
-Pokedex for Android
+Pokedex for Android using [PokeAPI](https://pokeapi.co) ([GitHub](https://github.com/PokeAPI/pokeapi))
 
 <p align="middle">
   <img src="https://i.imgur.com/114tzYa.jpg" width="30%">
